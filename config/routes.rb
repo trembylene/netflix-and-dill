@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'plants/index'
+
+  get 'plants/new'
+
+  get 'plants/edit'
+
   devise_for :users
   resources :users
   resources :bookings

@@ -1,0 +1,24 @@
+<div class="plant-banner" style="background-image: url('<%= cl_image_path @plant.photo, crop: :fill %>')">
+  <div class="plant-title">
+    <h1><%= @plant.title %></h1>
+  </div>
+</div>
+
+<div class="plant-container">
+  <div class="row">
+    <div class="col-xs-5 col-xs-offset-2">
+      <div class="plant-description">
+        <h2>Description</h2>
+        <p>The BEST plant in the world!</p>
+        <ul class="list-inline">
+          <li><i class="far fa-edit"></i></li>
+          <li><i class="far fa-trash-alt"></i></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-xs-3">
+      <div class="plant-care">
+      </div>
+    </div>
+  </div>
+</div>

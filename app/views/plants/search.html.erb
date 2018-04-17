@@ -1,0 +1,31 @@
+<div class="container">
+  <% if @plants.blank? %>
+    <h2>Sorry. There are no plants containing the term <%= params[:search] %>.</h2>
+  <% end %>
+</div>
+
+<% if @plants.values.flatten.count != Plant.count %>
+  <h1>Search Results (<%= @plants.values.flatten.count %>)</h1>
+<% end %>
+
+<div class="card-container">
+  <div class="container">
+    <% @plants.each do |plant_type, plants| %>
+      <h3><%= plant_type %></h3>
+      <div class="row">
+        <% plants.each do |plant| %>
+          <div class="col-xs-12 col-sm-3">
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+             url('<%= cl_image_path plant.photo, height: 300, width: 400, crop: :fill %>')">
+             <div class="card-category"><%= plant_type %></div>
+              <div class="card-body card-description">
+                <h3 class="card-title"><%= plant.title %></h3>
+              </div>
+              <%= link_to "", plant_path(plant), class: "card-link"  %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

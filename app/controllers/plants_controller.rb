@@ -3,11 +3,15 @@ class PlantsController < ApplicationController
   def index
     # @plants = Plant.all
     @plants = policy_scope(Plant).order(created_at: :desc)
+  end
+
+  def search
     if params[:search]
-      @plants = Plant.search(params[:search]).order("created_at DESC")
+      @plants = policy_scope(Plant.search(params[:search]))
     else
-      @plants = Plant.all.order("created_at DESC")
+      @plants = policy_scope(Plant)
     end
+    @plants = @plants.order("created_at DESC").group_by { |p| p.plant_type }
   end
 
   def new

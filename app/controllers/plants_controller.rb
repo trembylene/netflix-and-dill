@@ -28,6 +28,7 @@ class PlantsController < ApplicationController
   end
 
   def edit
+    authorize @plant
   end
 
   def update

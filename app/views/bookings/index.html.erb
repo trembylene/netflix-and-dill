@@ -1,0 +1,29 @@
+<h2 class="text-center">Your bookings</h2>
+
+<div class="container">
+  <% @bookings.each do |booking| %>
+  <h3><%= (booking.plant.title).capitalize %> booking information</h3>
+    <div class="row">
+      <div class="col-xs-12">
+        <h4>Plant owner</h4>
+        <div class="booking">
+          <p><em>Owner: </em><%= booking.plant.user.first_name %> <%= booking.plant.user.last_name %></p>
+          <p><em>Contact details: </em><%= booking.plant.user.email %></p>
+          <%= link_to "Plant details", plant_path(booking.plant_id) %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <h4>Details</h4>
+        <div class="booking">
+          <p><em>Start date: </em><%= booking.start_date %></p>
+          <p><em>End date: </em><%= booking.end_date %></p>
+          <p><em>Daily cost: </em><%= booking.plant.cost %></p>
+          <p><em>Total cost: </em><%= ((booking.end_date - booking.start_date).to_i)*booking.plant.cost %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+

@@ -3,19 +3,21 @@
 <% end %>
 
 <div class="card-container">
-  <div class="row">
-    <% @plants.each do |plant| %>
-    <div class="col-sm-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-         url('<%= cl_image_path plant.photo, height: 300, width: 400, crop: :fill %>')">
-          <div class="card-body">
-            <h3 class="card-title"><%= plant.title %></h3>
-          </div>
-          <div class="card-footer">
-            <%= link_to "Details", plant_path(plant) %>
+  <div class="container">
+    <div class="row">
+      <% @plants.each do |plant| %>
+      <div class="col-xs-12 col-sm-3">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+           url('<%= cl_image_path plant.photo, height: 300, width: 400, crop: :fill %>')">
+            <div class="card-body card-description">
+              <h3 class="card-title"><%= plant.title %></h3>
+            </div>
+            <div class="card-footer">
+              <%= link_to "Details", plant_path(plant), class: "card-link"  %>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

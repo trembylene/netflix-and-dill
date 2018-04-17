@@ -1,5 +1,5 @@
 class PlantsController < ApplicationController
-  before_action :find_plant, only: [:show, :update, :destroy]
+  before_action :find_plant, only: [:show, :update, :destroy, :edit]
   def index
     @plants = Plant.all
   end
@@ -22,10 +22,17 @@ class PlantsController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
-    @plant.update(plant_params)
+    respond_to do |format|
+      if @plant.update(plant_params)
+        format.html { redirect_to @plant, notice: 'Your plant was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
   end
 
   def destroy

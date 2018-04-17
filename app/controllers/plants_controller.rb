@@ -3,6 +3,11 @@ class PlantsController < ApplicationController
   def index
     # @plants = Plant.all
     @plants = policy_scope(Plant).order(created_at: :desc)
+    if params[:search]
+      @plants = Plant.search(params[:search]).order("created_at DESC")
+    else
+      @plants = Plant.all.order("created_at DESC")
+    end
   end
 
   def new

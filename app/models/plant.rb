@@ -10,4 +10,8 @@ class Plant < ApplicationRecord
   validates :cost, presence: true
   validates :plant_type, presence: true
   mount_uploader :photo, PhotoUploader
+
+  def self.search(search)
+    where("title ILIKE ? OR description ILIKE ? OR care ILIKE ? OR plant_type ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+  end
 end

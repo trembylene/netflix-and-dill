@@ -1,29 +1,33 @@
 <h2 class="text-center">Your bookings</h2>
 
-<div class="container">
-  <% @bookings.each do |booking| %>
-  <h3><%= (booking.plant.title).capitalize %> booking information</h3>
-    <div class="row">
-      <div class="col-xs-12">
-        <h4>Plant owner</h4>
-        <div class="booking">
-          <p><em>Owner: </em><%= booking.plant.user.first_name %> <%= booking.plant.user.last_name %></p>
-          <p><em>Contact details: </em><%= booking.plant.user.email %></p>
-          <%= link_to "Plant details", plant_path(booking.plant_id) %>
+<div class="bookings">
+  <div class="container">
+    <% @bookings.each do |booking| %>
+      <div class="row">
+        <div class="col-xs-12 col-sm-8">
+          <h3 class="booking-title"><%= (booking.plant.title).capitalize %> booking information</h3>
+          <h4>Plant owner</h4>
+          <div class="booking">
+            <p><em>Owner: </em><%= booking.plant.user.first_name %> <%= booking.plant.user.last_name %></p>
+            <p><em>Contact details: </em><%= booking.plant.user.email %></p>
+            <%= link_to "Plant details", plant_path(booking.plant_id) %>
+          </div>
+          <h4>Details</h4>
+          <div class="booking">
+            <p><em>Start date: </em><%= booking.start_date %></p>
+            <p><em>End date: </em><%= booking.end_date %></p>
+            <p><em>Daily cost: </em><%= booking.plant.cost %></p>
+            <p><em>Total cost: </em><%= ((booking.end_date - booking.start_date).to_i)*booking.plant.cost %></p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card-booking" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+           url('<%= cl_image_path booking.plant.photo, height: 200, width: 350, crop: :fill %>')">
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <h4>Details</h4>
-        <div class="booking">
-          <p><em>Start date: </em><%= booking.start_date %></p>
-          <p><em>End date: </em><%= booking.end_date %></p>
-          <p><em>Daily cost: </em><%= booking.plant.cost %></p>
-          <p><em>Total cost: </em><%= ((booking.end_date - booking.start_date).to_i)*booking.plant.cost %></p>
-        </div>
-      </div>
-    </div>
-  <% end %>
+      <hr>
+    <% end %>
+  </div>
 </div>
 

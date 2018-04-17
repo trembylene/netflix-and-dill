@@ -13,7 +13,7 @@
           <li><%= @plant.description %></li>
           <% if policy(@plant).update? %>
             <li><%= link_to "Edit", edit_plant_path(@plant), class:"ml-3 text-warning fa fa-edit" %></li>
-            <li><%= link_to "Delete", plant_path(@plant), method: :delete %></li>
+            <li><%= link_to "Delete", plant_path(@plant), method: :delete, data: { confirm: 'Are you sure?' }, class:"fas fa-trash-alt" %></li>
           <% end %>
           <li><%= link_to 'Back', plants_path %></li>
         </ul>

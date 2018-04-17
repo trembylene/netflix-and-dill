@@ -1,3 +1,9 @@
+<div class="container">
+  <% if @plants.blank? %>
+    <h2>Sorry. There are no plants containing the term <%= params[:search] %>.</h2>
+  <% end %>
+</div>
+
 <% if @plants.count != Plant.all.count %>
   <h1>Search Results (<%= @plants.count %>)</h1>
 <% end %>

@@ -15,7 +15,7 @@
     <% @plants.each do |plant| %>
       <div class="col-xs-12 col-sm-4 col-md-3">
         <div class="plant card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= plant.photo %>);">
-          <div class="card-category">Popular</div>
+          <div class="card-category"><%= plant.plant_type %></div>
           <div class="card-description">
             <h2><%= link_to plant.title, plant_path(plant) %></h2>
           </div>

@@ -22,6 +22,8 @@ class PlantsController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
+    @booking.plant = @plant
     authorize @plant
   end
 

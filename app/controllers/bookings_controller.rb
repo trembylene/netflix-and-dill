@@ -1,18 +1,14 @@
 class BookingsController < ApplicationController
-  def new
-    @booking = Booking.new
-  end
 
   def create
     @booking = Booking.new(booking_params)
     # save booking to that instance of user
     @booking.user = current_user
-
-    if @booking.save
-      redirect_to root_path
-    else
-      render :new
-    end
+    @plant = Plant.find(params[:plant_id])
+    @booking.plant = @plant
+    authorize @plant
+    @booking.save
+    redirect_to plant_path(@plant)
   end
 
   def destroy

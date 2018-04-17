@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users
+  resources :users do
+    resources :bookings, only: [:index]
+  end
   resources :plants do
     resources :bookings, only: [:create, :edit, :update, :destroy]
   end

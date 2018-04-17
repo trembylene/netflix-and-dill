@@ -1,5 +1,9 @@
 class BookingsController < ApplicationController
 
+  def index
+    @bookings = policy_scope(Booking).order(created_at: :desc)
+  end
+
   def create
     @booking = Booking.new(booking_params)
     # save booking to that instance of user

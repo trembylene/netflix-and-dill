@@ -6,13 +6,16 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    # save booking to that instance of user
     @booking.user = current_user
     @plant = Plant.find(params[:plant_id])
     @booking.plant = @plant
     authorize @plant
-    @booking.save
-    redirect_to plant_path(@plant)
+    if @booking.save
+      redirect_to plant_path(@plant)
+    else
+      @bookings = Booking.where(plant:@plant)
+      render "plants/show"
+    end
   end
 
   def destroy
@@ -28,4 +31,3 @@ class BookingsController < ApplicationController
     params.require(:booking).permit(:plant_id, :start_date, :end_date)
   end
 end
-

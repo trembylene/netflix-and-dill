@@ -22,6 +22,17 @@
     <div class="col-xs-3">
       <div class="plant-booking">
         <h3>Book this plant</h3>
+        <button onclick="showCalendar()">See Available Dates</button>
+        <div id="calendar" style="display:none">
+          <%= month_calendar events: @bookings do |date, bookings| %>
+            <%= date.day %>
+            <% bookings.each do |booking| %>
+              <div>
+                <strong>X</strong>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
         <%= simple_form_for [@plant, @booking] do |f| %>
           <%= f.error_notification %>
           <div class="form-inputs">
@@ -30,7 +41,7 @@
           </div>
 
           <div class="form-actions">
-            <%= f.button :submit, "Complete" %>
+            <%= f.button :submit, "Book" %>
           </div>
         <% end %>
       </div>

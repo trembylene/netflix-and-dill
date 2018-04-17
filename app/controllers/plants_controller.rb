@@ -24,6 +24,7 @@ class PlantsController < ApplicationController
   def show
     @booking = Booking.new
     @booking.plant = @plant
+    @bookings = Booking.where(plant:@plant)
     authorize @plant
   end
 

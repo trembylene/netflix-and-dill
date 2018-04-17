@@ -1,0 +1,25 @@
+.forms {
+  h2 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4)
+  }
+}
+
+.shared-link {
+  text-decoration: none;
+  color: black;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.submit-button {
+  padding: 5px 30px;
+}

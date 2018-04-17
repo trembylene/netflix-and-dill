@@ -1,7 +1,28 @@
-<div class="container">
-  <h1 class="text-center">Netflix and dill</h1>
-  <br>
-  <h2 class="text-center">Website in development!</h2>
-  <%= image_tag 'cactus.jpg', height:"400px", class:"center-block" %>
+<div class="container-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('https://res.cloudinary.com/trembylene/image/upload/v1523945518/plant-banner.jpg')">
+  <div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1 class="title-banner text-center">Netflix and Dill</h1>
+      <h2 class="byline-banner text-center">Plants to rent for all occasions</h2>
+      <%= link_to "Find plants to rent", plants_path, class: "btn btn-success" %>
+    </div>
+  </div>
+  </div>
 </div>
-
+<div class="container-plants">
+<div class="container">
+  <div class="row">
+    <% @plants.each do |plant| %>
+      <div class="col-xs-12 col-sm-4 col-md-3">
+        <div class="plant card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= plant.photo %>);">
+          <div class="card-category">Popular</div>
+          <div class="card-description">
+            <h2><%= link_to plant.title, plant_path(plant) %></h2>
+          </div>
+          <%= link_to "", plant_path(plant), class: "card-link" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+</div>

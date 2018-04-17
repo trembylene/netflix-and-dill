@@ -11,13 +11,19 @@
         <h2>Description</h2>
         <p>The BEST plant in the world!</p>
         <ul class="list-inline">
-          <li><i class="far fa-edit"></i></li>
-          <li><i class="far fa-trash-alt"></i></li>
+          <li><%= link_to "Update", edit_plant_path(@plant) %></li>
+          <li><%= link_to "Delete", plant_path(@plant), method: :delete %></li>
         </ul>
       </div>
     </div>
     <div class="col-xs-3">
+      <div class="plant-booking">
+        <h3>Book this plant</h3>
+        <br>
+        <br>
+      </div>
       <div class="plant-care">
+        <h2>Plant Care</h2>
       </div>
     </div>
   </div>

@@ -1,2 +1,28 @@
 // Import page-specific CSS files here.
 @import "home";
+@import "show";
+
+.card-container {
+  background-color: #ededed;
+  padding-bottom: 50px;
+}
+
+.card {
+  height: 300px;
+  margin: 40px 40px;
+  background-size: cover;
+  color: #eee;
+  text-shadow: -1px 0 grey, 0 1px grey, 1px 0 grey, 0 -1px grey;
+  background-color: white;
+
+}
+
+.card-title {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.card-footer {
+  position: absolute;
+  bottom: 0;
+}

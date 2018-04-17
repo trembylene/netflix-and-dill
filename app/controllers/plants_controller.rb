@@ -1,5 +1,5 @@
 class PlantsController < ApplicationController
-  before_action :find_plant, only: [:show, :update, :destroy]
+  before_action :find_plant, only: [:show, :edit, :update, :destroy]
   def index
     @plants = Plant.all
   end
@@ -26,6 +26,11 @@ class PlantsController < ApplicationController
 
   def update
     @plant.update(plant_params)
+    if @plant.save
+      redirect_to plant_path(@plant)
+    else
+      render :edit
+    end
   end
 
   def destroy

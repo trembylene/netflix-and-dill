@@ -11,15 +11,32 @@
         <h2>Description</h2>
         <ul class="list-inline">
           <li><%= @plant.description %></li>
-          <li><%= link_to 'Edit', edit_plant_path(@plant), class:"ml-3 text-warning fa fa-edit" %></li>
+          <% if policy(@plant).update? %>
+            <li><%= link_to "Edit", edit_plant_path(@plant), class:"ml-3 text-warning fa fa-edit" %></li>
+            <li><%= link_to "Delete", plant_path(@plant), method: :delete %></li>
+          <% end %>
+          <li><%= link_to 'Back', plants_path %></li>
         </ul>
       </div>
     </div>
     <div class="col-xs-3">
+      <div class="plant-booking">
+        <h3>Book this plant</h3>
+        <%= simple_form_for [@plant, @booking] do |f| %>
+          <%= f.error_notification %>
+          <div class="form-inputs">
+            <%= f.input :start_date, required: true, autofocus: true %>
+            <%= f.input :end_date, required: true %>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, "Complete" %>
+          </div>
+        <% end %>
+      </div>
       <div class="plant-care">
-        <h2>Care</h2>
+        <h2>Plant Care</h2>
         <%= @plant.care %>
-        <%= link_to 'Edit', edit_plant_path(@plant), class:"ml-3 text-warning fa fa-edit" %>
       </div>
     </div>
   </div>

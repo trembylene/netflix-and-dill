@@ -1,4 +1,4 @@
-<div class="navbar-wagon">
+<div class="navbar-wagon navbar-fixed-top">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "logo-dill.png", height: 50 %>
@@ -6,10 +6,12 @@
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-    <%= form_tag(search_plants_path, :method => "get", id: "search-form") do %>
+    <form class= "navbar-wagon-right form-inline my-2 my-lg-0">
+      <%= form_tag(search_plants_path, :method => "get", id: "search-form", class:"form-control my-2 mr-sm-2") do %>
         <%= text_field_tag :search, params[:search], placeholder: "Search" %>
-        <%= submit_tag "Search", :name => nil %>
-    <% end %>
+        <%= submit_tag "Search", class:"btn btn-outline-success my-2 my-sm-0", :name => nil %>
+      <% end %>
+    </form>
 
     <% if user_signed_in? %>
 
@@ -53,8 +55,22 @@
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li>
+          <form class= "navbar-wagon-right form-inline my-2 my-lg-0">
+            <%= form_tag(search_plants_path, :method => "get", id: "search-form", class:"form-control my-2 mr-sm-2", type:"search") do %>
+              <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+              <%= submit_tag "Search", class:"btn btn-outline-success my-2 my-sm-0", :name => nil %>
+            <% end %>
+          </form>
+        </li>
+        <li>
+          <%= link_to "Rent plants", plants_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        </li>
+        <li>
+          <%= link_to "Add a new plant", new_plant_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        </li>
+        <li>
           <%= link_to user_bookings_path(current_user.id) do %>
-            <i class="fa fa-bookmark-o"></i>  <%= t( default: "Your bookings") %>
+            <i class="fa fa-bookmark-o"></i>  <%= t(".your_bookings", default: "Your bookings") %>
           <% end %>
         </li>
         <li>

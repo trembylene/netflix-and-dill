@@ -8,27 +8,30 @@
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-9">
       <div class="plant-description">
-        <h2>Description</h2>
-        <ul class="list-inline">
-          <li></li>
-          <% if policy(@plant).update? %>
-            <li><%= link_to "Edit", edit_plant_path(@plant), class:"ml-3 text-warning fa fa-edit" %></li>
-            <li><%= link_to "Delete", plant_path(@plant), method: :delete, data: { confirm: 'Are you sure?' }, class:"fas fa-trash-alt" %></li>
-          <% end %>
-          <li><%= link_to 'Back', plants_path %></li>
-        </ul>
-        <%= @plant.description %>
-      </div>
-      <div class="plant-care">
-        <h3>Plant Care</h3>
-        <%= @plant.care %>
+        <h3>
+          <%= @plant.title %>
+          <small>
+            <%= link_to "", edit_plant_path(@plant), :class => "fa fa-edit fa-lg" %>
+            <%= link_to "", plant_path(@plant),
+              :class => "fa fa-trash-o fa-lg",
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+          </small>
+        </h3>
+        <h4><%= @plant.description %></h4>
+        <br>
+        <h4><em>Details</em></h4>
+        <p><strong>Plant care:</strong> <%= @plant.care %></p>
+        <p><strong>Plant type:</strong> <%= @plant.plant_type %></p>
+        <p><strong>Cost: </strong><%= @plant.cost %></p>
       </div>
       <div
         id="map"
-        style="width: 100%;
+        style="width: 50%;
         height: 400px;"
         data-markers="<%= @markers.to_json %>"
       ></div>
+      <%= link_to 'Back', plants_path %>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3">
       <div class="plant-booking">

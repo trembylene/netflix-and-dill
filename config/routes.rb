@@ -4,10 +4,10 @@ Rails.application.routes.draw do
     resources :bookings, only: [:index]
   end
   resources :plants do
-    resources :bookings, only: [:create, :edit, :update, :destroy]
-      collection do
+    collection do
       get "search"
     end
+    resources :bookings, only: [:create, :edit, :update, :destroy]
   end
   root to: 'pages#home'
 

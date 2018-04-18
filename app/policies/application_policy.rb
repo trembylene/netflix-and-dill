@@ -10,6 +10,10 @@ class ApplicationPolicy
     false
   end
 
+  def search?
+    false
+  end
+
   def show?
     scope.where(:id => record.id).exists?
   end

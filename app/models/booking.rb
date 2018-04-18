@@ -9,10 +9,16 @@ class Booking < ApplicationRecord
   validate :start_equal_to_end
   validate :no_overlap
   validate :no_past_bookings
+  validate :start_after_end
 
   def start_equal_to_end
     return unless self.start_date == self.end_date
     errors.add(:end_date, "must be different from start date")
+  end
+
+  def start_after_end
+    return unless self.start_date > self.end_date
+    errors.add(:end_date, "must be after start date")
   end
 
   def no_overlap
@@ -27,6 +33,8 @@ class Booking < ApplicationRecord
     return unless self.start_date < Date.today
     errors.add(:start_date, "must not be in the past")
   end
+
+
 
   def start_time
     self.start_date

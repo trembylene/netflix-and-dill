@@ -6,12 +6,10 @@
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-    <form class= "navbar-wagon-right form-inline my-2 my-lg-0">
-      <%= form_tag(search_plants_path, :method => "get", id: "search-form", class:"form-control my-2 mr-sm-2") do %>
-        <%= text_field_tag :search, params[:search], placeholder: "Search" %>
-        <%= submit_tag "Search", class:"btn btn-outline-success my-2 my-sm-0", :name => nil %>
-      <% end %>
-    </form>
+    <%= form_tag(search_plants_path, :method => "get", id: "search-form", class: "navbar-wagon-right form-inline my-2 my-lg-0") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+      <%= submit_tag "Search", class: "btn btn-outline-success my-2 my-sm-0", :name => nil %>
+    <% end %>
 
     <% if user_signed_in? %>
 
@@ -55,12 +53,9 @@
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li>
-          <form class= "navbar-wagon-right form-inline my-2 my-lg-0">
-            <%= form_tag(search_plants_path, :method => "get", id: "search-form", class:"form-control my-2 mr-sm-2", type:"search") do %>
-              <%= text_field_tag :search, params[:search], placeholder: "Search" %>
-              <%= submit_tag "Search", class:"btn btn-outline-success my-2 my-sm-0", :name => nil %>
-            <% end %>
-          </form>
+          <%= form_tag(search_plants_path, :method => "get", id: "search-form", class: "navbar-wagon-item navbar-wagon-link", type:"search") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+          <% end %>
         </li>
         <li>
           <%= link_to "Rent plants", plants_path, class: "navbar-wagon-item navbar-wagon-link" %>

@@ -1,8 +1,8 @@
-<div class="container">
-  <% if @plants.blank? %>
+<% if @plants.blank? %>
+  <div class="container">
     <h2>Sorry. There are no plants containing the term <%= params[:search] %>.</h2>
-  <% end %>
-</div>
+  </div>
+<% end %>
 
 <div
   id="map"

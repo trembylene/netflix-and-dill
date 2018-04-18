@@ -1,4 +1,5 @@
 class PlantsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :search, :show]
   before_action :find_plant, only: [:show, :update, :destroy, :edit]
   def index
     # @plants = Plant.all

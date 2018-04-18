@@ -12,6 +12,7 @@ gem 'rails', '5.1.6'
 gem 'redis'
 gem "pundit"
 gem "simple_calendar", "~> 2.0"
+gem "geocoder"
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'

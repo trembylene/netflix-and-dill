@@ -2,8 +2,14 @@ class PlantsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :search, :show]
   before_action :find_plant, only: [:show, :update, :destroy, :edit]
   def index
-    # @plants = Plant.all
     @plants = policy_scope(Plant).order(created_at: :desc)
+    @plants = @plants.where.not(latitude: nil, longitude: nil)
+    @markers = @plants.map do |plant|
+      {
+        lat: plant.latitude,
+        lng: plant.longitude,
+      }
+    end
   end
 
   def search
@@ -13,9 +19,8 @@ class PlantsController < ApplicationController
       @plants = policy_scope(Plant)
     end
     @plants = @plants.order("created_at DESC").group_by { |p| p.plant_type }
-    @plants = @plants.where.not(latitude: nil, longitude: nil)
-
-    @markers = @plants.map do |plant|
+    # @plants = @plants.where.not(latitude: nil, longitude: nil)
+    @markers = @plants.values.flatten.map do |plant|
       {
         lat: plant.latitude,
         lng: plant.longitude,
@@ -44,6 +49,10 @@ class PlantsController < ApplicationController
     @booking.plant = @plant
     @bookings = Booking.where(plant:@plant)
     authorize @plant
+    @markers = [{
+        lat: @plant.latitude,
+        lng: @plant.longitude,
+      }]
   end
 
   def edit
@@ -75,6 +84,6 @@ class PlantsController < ApplicationController
   end
 
   def plant_params
-    params.require(:plant).permit(:title, :description, :care, :photo, :photo_cache, :cost, :plant_type)
+    params.require(:plant).permit(:title, :address, :description, :care, :photo, :photo_cache, :cost, :plant_type)
   end
 end

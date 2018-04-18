@@ -4,6 +4,13 @@
   <% end %>
 </div>
 
+<div
+  id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-markers="<%= @markers.to_json %>"
+></div>
+
 <% if @plants.values.flatten.count != Plant.count %>
   <h1>Search Results (<%= @plants.values.flatten.count %>)</h1>
 <% end %>

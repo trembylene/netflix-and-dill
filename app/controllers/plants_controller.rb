@@ -13,6 +13,14 @@ class PlantsController < ApplicationController
       @plants = policy_scope(Plant)
     end
     @plants = @plants.order("created_at DESC").group_by { |p| p.plant_type }
+    @plants = @plants.where.not(latitude: nil, longitude: nil)
+
+    @markers = @plants.map do |plant|
+      {
+        lat: plant.latitude,
+        lng: plant.longitude,
+      }
+    end
   end
 
   def new

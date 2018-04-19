@@ -12,6 +12,11 @@ class PlantsController < ApplicationController
     end
   end
 
+  def my
+    @plants = policy_scope(current_user.plants).order(title: :asc)
+    authorize @plants
+  end
+
   def search
     if params[:search]
       @plants = policy_scope(Plant.search(params[:search]))
@@ -38,7 +43,7 @@ class PlantsController < ApplicationController
     authorize @plant
     @plant.user_id = current_user.id
     if @plant.save
-      redirect_to plant_path(@plant)
+      redirect_to my_plants_path(@plant)
     else
       render :new
     end

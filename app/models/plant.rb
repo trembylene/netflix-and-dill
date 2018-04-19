@@ -17,4 +17,16 @@ class Plant < ApplicationRecord
   def self.search(search)
     where("title ILIKE ? OR description ILIKE ? OR care ILIKE ? OR plant_type ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
   end
+
+  def booked_dates
+    array = []
+    bookings = Booking.where(plant:self.id)
+    bookings.each do |booking|
+      range = (booking.start_date..booking.end_date).to_a
+      range.each do |r|
+        array << r
+      end
+    end
+    return array
+  end
 end

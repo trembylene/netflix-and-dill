@@ -1,6 +1,7 @@
 class PlantsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :search, :show]
   before_action :find_plant, only: [:show, :update, :destroy, :edit]
+
   def index
     @plants = policy_scope(Plant).order(created_at: :desc)
     @plants = @plants.where.not(latitude: nil, longitude: nil)
@@ -8,8 +9,9 @@ class PlantsController < ApplicationController
       {
         lat: plant.latitude,
         lng: plant.longitude,
+        icon: 'https://cdn2.iconfinder.com/data/icons/tiny-cute/32/plant.png',
         infoWindow: {
-          content: plant.title,
+          content: "<article><a href='plants/#{plant.id}'> <img src='#{plant.photo}' class='photo_markers' /><h6>#{plant.title}</h6></a></article>"
         }
       }
     end
@@ -53,13 +55,14 @@ class PlantsController < ApplicationController
   end
 
   def show
-    @booking = Booking.new(start_date: Date.today, end_date: Date.today, plant: @plant)
+    @booking = Booking.new
+    @booking.plant = @plant
     @bookings = Booking.where(plant:@plant)
     authorize @plant
     @markers = [{
-      lat: @plant.latitude,
-      lng: @plant.longitude,
-    }]
+        lat: @plant.latitude,
+        lng: @plant.longitude,
+      }]
   end
 
   def edit

@@ -6,7 +6,7 @@
 
 <div class="plant-container">
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-9">
+    <div class="col-xs-12 col-sm-6 col-md-8">
       <div class="plant-description">
         <h3>
           <%= @plant.title %>
@@ -25,38 +25,32 @@
         <h4><em>Details</em></h4>
         <p><strong>Plant care:</strong> <%= @plant.care %></p>
         <p><strong>Plant type:</strong> <%= @plant.plant_type %></p>
-        <p><strong>Cost: </strong><%= @plant.cost %></p>
+        <p><strong>Cost: </strong>$<%= @plant.cost %></p>
       </div>
-      <div
-        id="map"
-        style="width: 50%;
-        height: 400px;"
-        data-markers="<%= @markers.to_json %>"
-      ></div>
       <%= link_to 'Back', plants_path %>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-3">
+    <div class="col-xs-12 col-sm-6 col-md-4">
+    <h3>Book this plant</h3>
       <div class="plant-booking">
-        <h3>Book this plant</h3>
-        <button onclick="showCalendar()">See Available Dates</button>
-        <div id="calendar" style="display:none">
-          <%= month_calendar events: @bookings do |date, bookings| %>
-            <%= date.day %>
-            <% bookings.each do |booking| %>
-              <div>
-                <strong>X</strong>
-              </div>
-            <% end %>
-          <% end %>
-        </div>
         <%= simple_form_for [@plant, @booking] do |f| %>
           <%= f.error_notification %>
           <div class="form-inputs">
-            <%= f.input :start_date, required: true, autofocus: true %>
-            <%= f.input :end_date, required: true %>
+            <%= f.hidden_field :cost, :value => "#{@plant.cost}" %>
+            <%= f.input :start_date, as: :string, label: "From", required: true, input_html: { class: "datepicker", data: {:'date-dates-disabled' => @plant.booked_dates }, :onchange => "calculateTotal()" } %>
+            <%= f.input :end_date, as: :string, label: "To", required: true, input_html: { class: "datepicker", data: {:'date-dates-disabled' => @plant.booked_dates }, :onchange => "calculateTotal()" } %>
           </div>
-
-          <div class="form-actions">
+          <div>
+            <ul class="list-inline">
+              <li><p>$<%= @plant.cost %> x</p></li>
+              <li id="days"></li>
+              <li><p>days</p></li>
+            </ul>
+            <ul class="list-inline">
+            <li><p>Total = $</p></li>
+            <li id="cost"></li>
+            </ul>
+          </div>
+          <div class="form-actions btn-book">
             <%= f.button :submit, "Book" %>
           </div>
         <% end %>
@@ -64,4 +58,10 @@
     </div>
   </div>
 </div>
+<div
+  id="map"
+  style="width: 100%;
+  height: 400px;"
+  data-markers="<%= @markers.to_json %>"
+></div>
 

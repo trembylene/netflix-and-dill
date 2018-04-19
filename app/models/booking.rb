@@ -47,5 +47,4 @@ class Booking < ApplicationRecord
   def dates
     self.start_date..self.end_date
   end
-
 end

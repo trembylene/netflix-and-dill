@@ -1,0 +1,26 @@
+<h2 class="text-center">My Plants</h2>
+<div class="my_plants">
+  <div class="container">
+    <% @plants.each do |plant| %>
+      <div class="row">
+        <div class="col-xs-12 col-sm-8">
+          <h3 class="my_plants-title"><%= (plant.title).capitalize %> </h3>
+          <h4>Plant owner</h4>
+          <div class="my_plants">
+            <p><em>Location: </em><%= plant.address %></p>
+            <p><em>Registered: </em><%= plant.created_at %></p>
+            <p><em>Last Update: </em><%= plant.updated_at %></p>
+            <%= link_to "Plant details", plant_path(plant.id) %>
+          </div>
+
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card-booking" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+           url('<%= cl_image_path plant.photo, height: 200, width: 350, crop: :fill %>')">
+          </div>
+        </div>
+      </div>
+      <hr>
+    <% end %>
+  </div>
+</div>

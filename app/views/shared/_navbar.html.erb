@@ -36,6 +36,11 @@
               <% end %>
             </li>
             <li>
+              <%= link_to my_plants_path(current_user.id) do %>
+                <i class="fa fa-tree"></i>  <%= t(".my_plants", default: "My plants") %>
+              <% end %>
+            </li>
+            <li>
               <%= link_to edit_user_registration_path do %>
                 <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
               <% end %>
@@ -69,6 +74,11 @@
         <li>
           <%= link_to plants_path do %>
             <i class="fa fa-tree"></i> <%= t(".rent_plants", default: "Rent plants") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to my_plants_path(current_user.id) do %>
+            <i class="fa fa-tree"></i>  <%= t(".my_plants", default: "My plants") %>
           <% end %>
         </li>
         <li>

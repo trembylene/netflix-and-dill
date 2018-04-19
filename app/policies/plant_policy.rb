@@ -13,6 +13,10 @@ class PlantPolicy < ApplicationPolicy
     record_belongs_to_user_or_admin?
   end
 
+  def my?
+    true
+  end
+
   def destroy?
     update?
   end

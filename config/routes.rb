@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :plants do
     collection do
       get "search"
+      get :my
     end
     resources :bookings, only: [:create, :edit, :update, :destroy]
   end

@@ -10,13 +10,15 @@
       <div class="plant-description">
         <h3>
           <%= @plant.title %>
-          <small>
-            <%= link_to "", edit_plant_path(@plant), :class => "fa fa-edit fa-lg" %>
-            <%= link_to "", plant_path(@plant),
-              :class => "fa fa-trash-o fa-lg",
-              method: :delete,
-              data: { confirm: "Are you sure?" } %>
-          </small>
+          <% if @plant.user == current_user %>
+            <small>
+              <%= link_to "", edit_plant_path(@plant), :class => "fa fa-edit fa-lg" %>
+              <%= link_to "", plant_path(@plant),
+                :class => "fa fa-trash-o fa-lg",
+                method: :delete,
+                data: { confirm: "Are you sure?" } %>
+            </small>
+          <% end %>
         </h3>
         <h4><%= @plant.description %></h4>
         <br>

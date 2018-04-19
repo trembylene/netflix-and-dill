@@ -8,6 +8,9 @@ class PlantsController < ApplicationController
       {
         lat: plant.latitude,
         lng: plant.longitude,
+        infoWindow: {
+          content: plant.title,
+        }
       }
     end
   end

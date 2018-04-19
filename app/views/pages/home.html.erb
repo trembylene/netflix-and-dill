@@ -1,9 +1,9 @@
-<div class="container-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url(<%= asset_path 'plant-banner.jpg' %>)">
+<div class="container-banner" style="background-image: url(<%= asset_path 'plant-banner.jpg' %>)">
   <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h1 class="title-banner text-center">Netflix and Dill</h1>
-      <h2 class="byline-banner text-center">Plants to rent for all occasions</h2>
+      <h1 class="title-banner text-center"><span>Netflix and Dill</span></h1>
+      <h2 class="byline-banner text-center"><span>Plants to rent for all occasions</span></h2>
       <%= link_to "Find plants to rent", plants_path, class: "btn btn-success" %>
     </div>
   </div>
@@ -13,9 +13,11 @@
 <div class="container">
   <div class="row">
     <% @plants.each do |plant| %>
-      <div class="col-xs-12 col-sm-4 col-md-3">
-        <div class="plant card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= plant.photo %>);">
-          <div class="card-category"><%= plant.plant_type %></div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card">
+          <div class="plant" style="background-image: url(<%= plant.photo %>);">
+            <div class="card-category"><%= plant.plant_type %></div>
+          </div>
           <div class="card-description">
             <h2><%= link_to plant.title, plant_path(plant) %></h2>
           </div>

@@ -1,12 +1,10 @@
-<div class="banner plant-banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= cl_image_path @plant.photo, crop: :fill %>')">
-  <div class="banner-content">
-    <h1><%= @plant.title %></h1>
-  </div>
-</div>
-
-<div class="plant-container">
+<div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-9">
+    <div class="col-xs-12 col-lg-6">
+      <div class="plant-show" style="background-image: url(<%= @plant.photo %>);">
+      </div>
+    </div>
+    <div class="col-xs-12 col-lg-6">
       <div class="plant-description">
         <h3>
           <%= @plant.title %>
@@ -27,15 +25,15 @@
         <p><strong>Plant type:</strong> <%= @plant.plant_type %></p>
         <p><strong>Cost: </strong><%= @plant.cost %></p>
       </div>
-      <div
-        id="map"
-        style="width: 100%;
-        height: 400px;"
-        data-markers="<%= @markers.to_json %>"
-      ></div>
-      <%= link_to 'Back', plants_path %>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-3">
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12 col-lg-6">
+      <div id="map" style="width: 80%; height: 350px;" data-markers="<%= @markers.to_json %>">
+      </div>
+    </div>
+    <div class="col-xs-12 col-lg-6">
       <div class="plant-booking">
         <h3>Book this plant</h3>
         <button onclick="showCalendar()">See Available Dates</button>
@@ -49,19 +47,18 @@
             <% end %>
           <% end %>
         </div>
-        <%= simple_form_for [@plant, @booking] do |f| %>
-          <%= f.error_notification %>
-          <div class="form-inputs">
-            <%= f.input :start_date, required: true, autofocus: true %>
-            <%= f.input :end_date, required: true %>
-          </div>
-
-          <div class="form-actions">
-            <%= f.button :submit, "Book" %>
-          </div>
-        <% end %>
+          <%= simple_form_for [@plant, @booking] do |f| %>
+            <%= f.error_notification %>
+            <div class="form-inputs">
+              <%= f.input :start_date, required: true, autofocus: true %>
+              <%= f.input :end_date, required: true %>
+            </div>
+            <div class="form-actions">
+              <%= f.button :submit, "Book", class: "btn btn-success" %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
 </div>
-

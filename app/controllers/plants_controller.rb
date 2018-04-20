@@ -37,7 +37,7 @@ class PlantsController < ApplicationController
         id: plant.id,
         icon: 'https://res.cloudinary.com/trembylene/image/upload/v1524193056/pin.png',
         infoWindow: {
-          content: "<a href='plants/#{plant.id}'><img src='#{plant.photo}' class='photo_markers' /><h5> $#{plant.cost}/day</h5><strong>#{plant.title}</strong><br>"
+          content: "<a href='#{plant.id}'><img src='#{plant.photo}' class='photo_markers' /><h5> $#{plant.cost}/day</h5><strong>#{plant.title}</strong><br>"
         }
       }
     end
@@ -69,7 +69,7 @@ class PlantsController < ApplicationController
       lng: @plant.longitude,
       icon: 'https://res.cloudinary.com/trembylene/image/upload/v1524193056/pin.png',
       infoWindow: {
-          content: "<a href='plants/#{plant.id}'><img src='#{plant.photo}' class='photo_markers' /><h5> $#{plant.cost}/day</h5><strong>#{plant.title}</strong><br>"
+          content: "<a href='#{@plant.id}'><img src='#{@plant.photo}' class='photo_markers' /><h5> $#{@plant.cost}/day</h5><strong>#{@plant.title}</strong><br>"
       }
     }]
   end

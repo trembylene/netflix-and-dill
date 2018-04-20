@@ -14,7 +14,7 @@ gem 'redis'
 gem "pundit"
 gem "simple_calendar", "~> 2.0"
 gem "geocoder"
-gem 'bootstrap-datepicker-rails'
+gem 'gem bootstrap-datepicker-rails', '~> 1.8', '>= 1.8.0.1'
 gem 'rails_real_favicon'
 
 gem 'autoprefixer-rails'

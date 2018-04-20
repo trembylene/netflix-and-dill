@@ -9,9 +9,9 @@ class PlantsController < ApplicationController
       {
         lat: plant.latitude,
         lng: plant.longitude,
-        icon: 'assets/pin.png',
+        icon: '/assets/pin.png',
         infoWindow: {
-          content: "<article><a href='plants/#{plant.id}'> <img src='#{plant.photo}' class='photo_markers' /><h6>#{plant.title}</h6></a></article>"
+          content: "<a href='plants/#{plant.id}'><img src='#{plant.photo}' class='photo_markers' /><h5> $#{plant.cost}/day</h5><strong>#{plant.title}</strong><br>"
         }
       }
     end
@@ -35,9 +35,9 @@ class PlantsController < ApplicationController
         lat: plant.latitude,
         lng: plant.longitude,
         id: plant.id,
-        icon: 'assets/images/pin.png',
+        icon: '/assets/pin.png',
         infoWindow: {
-          content: "<article><a href='plants/#{plant.id}'> <img src='#{plant.photo}' class='photo_markers' /><h6>#{plant.title}</h6></a></article>"
+          content: "<a href='plants/#{plant.id}'><img src='#{plant.photo}' class='photo_markers' /><h5> $#{plant.cost}/day</h5><strong>#{plant.title}</strong><br>"
         }
       }
     end
@@ -67,9 +67,9 @@ class PlantsController < ApplicationController
     @markers = [{
       lat: @plant.latitude,
       lng: @plant.longitude,
-      icon: 'assets/images/pin.png',
+      icon: '/assets/pin.png',
       infoWindow: {
-          content: "<article><a href='plants/#{@plant.id}'> <img src='#{@plant.photo}' class='photo_markers' /><h6>#{@plant.title}</h6></a></article>"
+          content: "<a href='plants/#{plant.id}'><img src='#{plant.photo}' class='photo_markers' /><h5> $#{plant.cost}/day</h5><strong>#{plant.title}</strong><br>"
       }
     }]
   end

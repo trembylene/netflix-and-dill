@@ -18,7 +18,7 @@
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-    <%= link_to "Rent plants", plants_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "Advertise your plant", plants_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
     <% if user_signed_in? %>
 
@@ -73,7 +73,7 @@
         </li>
         <li>
           <%= link_to plants_path do %>
-            <i class="fa fa-tree"></i> <%= t(".rent_plants", default: "Rent plants") %>
+            <i class="fa fa-tree"></i> <%= t(".rent_plants", default: "Advertise your plant") %>
           <% end %>
         </li>
         <li>
@@ -115,7 +115,7 @@
             </li>
             <li>
               <%= link_to plants_path do %>
-                <i class="fa fa-pagelines"></i> <%= t(".rent_plants", default: "Rent plants") %>
+                <i class="fa fa-pagelines"></i> <%= t(".rent_plants", default: "Advertise your plant") %>
               <% end %>
             </li>
             <li>

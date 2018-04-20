@@ -9,7 +9,7 @@ class PlantsController < ApplicationController
       {
         lat: plant.latitude,
         lng: plant.longitude,
-        icon: 'https://cdn2.iconfinder.com/data/icons/tiny-cute/32/plant.png',
+        icon: 'assets/pin.png',
         infoWindow: {
           content: "<article><a href='plants/#{plant.id}'> <img src='#{plant.photo}' class='photo_markers' /><h6>#{plant.title}</h6></a></article>"
         }

@@ -25,7 +25,7 @@
         <h4><em>Details</em></h4>
         <p><strong>Plant care:</strong> <%= @plant.care %></p>
         <p><strong>Plant type:</strong> <%= @plant.plant_type %></p>
-        <p><strong>Cost: </strong>$<%= @plant.cost %></p>
+        <p><strong>Cost: </strong>$<%= @plant.cost %> /day </p>
       </div>
       <%= link_to 'Back', plants_path %>
     </div>
@@ -36,11 +36,13 @@
           <%= f.error_notification %>
           <div class="form-inputs">
             <%= f.hidden_field :cost, :value => "#{@plant.cost}" %>
-            <%= f.input :start_date, as: :string, label: "From", required: true, input_html: { class: "datepicker", data: {:'date-dates-disabled' => @plant.booked_dates }, :onchange => "calculateTotal()" } %>
-            <%= f.input :end_date, as: :string, label: "To", required: true, input_html: { class: "datepicker", data: {:'date-dates-disabled' => @plant.booked_dates }, :onchange => "calculateTotal()" } %>
+            <p id="date-label">From</p>
+            <%= f.input :start_date, as: :string, label: false, required: true, input_html: { class: "datepicker", data: {:'date-dates-disabled' => @plant.booked_dates }, :onchange => "calculateTotal()", :onblur => "setEndDate()" } %>
+            <p id="date-label">To</p>
+            <%= f.input :end_date, as: :string, label: false, required: true, input_html: { class: "datepicker", data: {:'date-dates-disabled' => @plant.booked_dates }, :onchange => "calculateTotal()" } %>
           </div>
           <div>
-            <ul class="list-inline">
+            <ul class="cost-info list-inline">
               <li><p>$<%= @plant.cost %> x</p></li>
               <li id="days"></li>
               <li><p>days</p></li>

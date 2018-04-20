@@ -34,6 +34,10 @@ class PlantsController < ApplicationController
       {
         lat: plant.latitude,
         lng: plant.longitude,
+        id: plant.id,
+        infoWindow: {
+          content: "<article><a href='plants/#{plant.id}'> <img src='#{plant.photo}' class='photo_markers' /><h6>#{plant.title}</h6></a></article>"
+        }
       }
     end
   end
@@ -60,9 +64,12 @@ class PlantsController < ApplicationController
     @bookings = Booking.where(plant:@plant)
     authorize @plant
     @markers = [{
-        lat: @plant.latitude,
-        lng: @plant.longitude,
-      }]
+      lat: @plant.latitude,
+      lng: @plant.longitude,
+      infoWindow: {
+          content: "<article><a href='plants/#{@plant.id}'> <img src='#{@plant.photo}' class='photo_markers' /><h6>#{@plant.title}</h6></a></article>"
+      }
+    }]
   end
 
   def edit

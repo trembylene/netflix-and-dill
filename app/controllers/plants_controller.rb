@@ -35,6 +35,7 @@ class PlantsController < ApplicationController
         lat: plant.latitude,
         lng: plant.longitude,
         id: plant.id,
+        icon: 'assets/images/pin.png',
         infoWindow: {
           content: "<article><a href='plants/#{plant.id}'> <img src='#{plant.photo}' class='photo_markers' /><h6>#{plant.title}</h6></a></article>"
         }
@@ -65,6 +66,7 @@ class PlantsController < ApplicationController
     @markers = [{
       lat: @plant.latitude,
       lng: @plant.longitude,
+      icon: 'assets/images/pin.png',
       infoWindow: {
           content: "<article><a href='plants/#{@plant.id}'> <img src='#{@plant.photo}' class='photo_markers' /><h6>#{@plant.title}</h6></a></article>"
       }

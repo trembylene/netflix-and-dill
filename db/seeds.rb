@@ -100,7 +100,7 @@ plant.save!
 plant = Plant.new(
   title: "The Wives of Bath",
   description: "Looking for a plant that will never leave you or let you have any alone time and will question everything in your life? This is it.",
-  photo: open("https://res.cloudinary.com/trembylene/image/upload/v1524183895/9-min.jpg.jpg"),
+  photo: open("https://res.cloudinary.com/trembylene/image/upload/v1524183895/9-min.jpg"),
   care: "The quickest way to this plants heart is some TLC. Or any attention really.",
   user_id: 1,
   cost: 20,

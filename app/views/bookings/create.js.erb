@@ -1,0 +1,13 @@
+function refreshForm(innerHTML) {
+  const newBookingForm = document.getElementById('plant-booking');
+  newBookingForm.innerHTML = innerHTML;
+}
+
+<% if @booking.errors.any? %>
+  refreshForm('<%= j render "bookings/form", plant: @plant, booking: @booking %>');
+<% else %>
+  window.location = "<%= bookings_path %>"
+<% end %>
+
+
+setupUI();

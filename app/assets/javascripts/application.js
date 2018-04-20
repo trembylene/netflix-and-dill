@@ -3,7 +3,7 @@
 //= require_tree .
 //= require bootstrap-datepicker
 
-$(document).ready(function(){
+var setupUI = function() {
   var el = $('.datepicker');
 
   // check if element exists if not stop running the script
@@ -16,8 +16,7 @@ $(document).ready(function(){
     orientation: "bottom"
   });
   calculateTotal();
-});
-
+};
 
 function calculateTotal() {
   let range = $("#booking_end_date").datepicker('getDate') - $("#booking_start_date").datepicker('getDate');
@@ -27,3 +26,5 @@ function calculateTotal() {
   let price = document.getElementById('booking_cost').value;
   document.getElementById('cost').innerHTML = `<strong>${(range / 86400000) * price}</strong>`;
 };
+
+$(document).ready(setupUI);

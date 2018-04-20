@@ -1,0 +1,22 @@
+<%= simple_form_for([plant, booking], remote: user_signed_in?) do |f| %>
+          <%= f.error_notification %>
+          <div class="form-inputs">
+            <%= f.hidden_field :cost, :value => "#{plant.cost}" %>
+            <%= f.input :start_date, as: :string, label: "From", required: true, input_html: { class: "datepicker", data: {:'date-dates-disabled' => plant.booked_dates }, :onchange => "calculateTotal()" } %>
+            <%= f.input :end_date, as: :string, label: "To", required: true, input_html: { class: "datepicker", data: {:'date-dates-disabled' => plant.booked_dates }, :onchange => "calculateTotal()" } %>
+          </div>
+          <div>
+            <ul class="list-inline">
+              <li><p>$<%= plant.cost %> x</p></li>
+              <li id="days"></li>
+              <li><p>days</p></li>
+            </ul>
+            <ul class="list-inline">
+            <li><p>Total = $</p></li>
+            <li id="cost"></li>
+            </ul>
+          </div>
+          <div class="form-actions btn-book">
+            <%= f.button :submit, "Book" %>
+          </div>
+        <% end %>

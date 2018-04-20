@@ -13,6 +13,10 @@
   margin-top: 10vh;
 }
 
+.plant-booking {
+  margin-bottom: 20px;
+}
+
 #map {
   margin-top: 5vh;
   margin-bottom: 5vh;
@@ -39,7 +43,10 @@ p {
     width: 250px;
     border-radius: 3px;
     border: 1px solid rgba(0,0,0,0.1);
-    background-color: #4da558;
+    background-color: rgba(77, 165, 88, 0.7);
+    &:hover {
+      background-color: rgba(77, 165, 88, 1);
+    }
   }
 }
 

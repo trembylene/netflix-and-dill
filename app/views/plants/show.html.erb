@@ -34,33 +34,10 @@
       </div>
     </div>
     <div class="col-xs-12 col-lg-6">
-      <div class="plant-booking">
+      <div class="booking-title">
         <h3>Book this plant</h3>
-      <div class="plant-booking">
-        <%= simple_form_for [@plant, @booking] do |f| %>
-          <%= f.error_notification %>
-          <div class="form-inputs">
-            <%= f.hidden_field :cost, :value => "#{@plant.cost}" %>
-            <p id="date-label">From</p>
-            <%= f.input :start_date, as: :string, label: false, required: true, input_html: { class: "datepicker", data: {:'date-dates-disabled' => @plant.booked_dates }, :onchange => "calculateTotal()", :onblur => "setEndDate()" } %>
-            <p id="date-label">To</p>
-            <%= f.input :end_date, as: :string, label: false, required: true, input_html: { class: "datepicker", data: {:'date-dates-disabled' => @plant.booked_dates }, :onchange => "calculateTotal()" } %>
-          </div>
-          <div>
-            <ul class="cost-info list-inline">
-              <li><p>$<%= @plant.cost %> x</p></li>
-              <li id="days"></li>
-              <li><p>days</p></li>
-            </ul>
-            <ul class="list-inline">
-            <li><p>Total = $</p></li>
-            <li id="cost"></li>
-            </ul>
-          </div>
-          <div class="form-actions btn-book">
-            <%= f.button :submit, "Book" %>
-          </div>
-        <% end %>
+      <div class="plant-booking", id="plant-booking">
+        <%= render 'bookings/form', plant: @plant, booking: @booking  %>
         </div>
       </div>
     </div>

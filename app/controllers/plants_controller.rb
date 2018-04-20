@@ -9,7 +9,7 @@ class PlantsController < ApplicationController
       {
         lat: plant.latitude,
         lng: plant.longitude,
-        icon: '/assets/pin.png',
+        icon: 'https://res.cloudinary.com/trembylene/image/upload/v1524193056/pin.png',
         infoWindow: {
           content: "<a href='plants/#{plant.id}'><img src='#{plant.photo}' class='photo_markers' /><h5> $#{plant.cost}/day</h5><strong>#{plant.title}</strong><br>"
         }
@@ -35,7 +35,11 @@ class PlantsController < ApplicationController
         lat: plant.latitude,
         lng: plant.longitude,
         id: plant.id,
+<<<<<<< HEAD
         icon: '/assets/pin.png',
+=======
+        icon: 'https://res.cloudinary.com/trembylene/image/upload/v1524193056/pin.png',
+>>>>>>> cf489f6693d6be19dd46cd159957d525499f8513
         infoWindow: {
           content: "<a href='plants/#{plant.id}'><img src='#{plant.photo}' class='photo_markers' /><h5> $#{plant.cost}/day</h5><strong>#{plant.title}</strong><br>"
         }
@@ -67,7 +71,7 @@ class PlantsController < ApplicationController
     @markers = [{
       lat: @plant.latitude,
       lng: @plant.longitude,
-      icon: '/assets/pin.png',
+      icon: 'https://res.cloudinary.com/trembylene/image/upload/v1524193056/pin.png',
       infoWindow: {
           content: "<a href='plants/#{plant.id}'><img src='#{plant.photo}' class='photo_markers' /><h5> $#{plant.cost}/day</h5><strong>#{plant.title}</strong><br>"
       }

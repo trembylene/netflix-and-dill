@@ -9,7 +9,7 @@ class PlantsController < ApplicationController
         lat: plant.latitude,
         lng: plant.longitude,
         infoWindow: {
-          content: plant.title,
+          content: "<a href='/plants/#{plant.id}'>#{plant.title}</a>"
         }
       }
     end
@@ -32,6 +32,10 @@ class PlantsController < ApplicationController
       {
         lat: plant.latitude,
         lng: plant.longitude,
+        id: plant.id,
+        infoWindow: {
+          content: "<a href='/plants/#{plant.id}'>#{plant.title}</a>"
+        }
       }
     end
   end
@@ -59,6 +63,9 @@ class PlantsController < ApplicationController
     @markers = [{
       lat: @plant.latitude,
       lng: @plant.longitude,
+      infoWindow: {
+        content: "<a href='/plants/#{@plant.id}'>#{@plant.title}</a>"
+      }
     }]
   end
 

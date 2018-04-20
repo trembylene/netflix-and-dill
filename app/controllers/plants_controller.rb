@@ -11,7 +11,7 @@ class PlantsController < ApplicationController
         lng: plant.longitude,
         icon: '/assets/pin.png',
         infoWindow: {
-          content: "<a href='#{plant.id}'><img src='#{plant.photo}' class='photo_markers' /><h5> $#{plant.cost}/day</h5><strong>#{plant.title}</strong><br>"
+          content: "<a href='plants/#{plant.id}'><img src='#{plant.photo}' class='photo_markers' /><h5> $#{plant.cost}/day</h5><strong>#{plant.title}</strong><br>"
         }
       }
     end
@@ -35,9 +35,9 @@ class PlantsController < ApplicationController
         lat: plant.latitude,
         lng: plant.longitude,
         id: plant.id,
-        icon: "<%= asset_path 'pin.png' %>",
+        icon: '/assets/pin.png',
         infoWindow: {
-          content: "<a href='#{plant.id}'><img src='#{plant.photo}' class='photo_markers' /><h5> $#{plant.cost}/day</h5><strong>#{plant.title}</strong><br>"
+          content: "<a href='plants/#{plant.id}'><img src='#{plant.photo}' class='photo_markers' /><h5> $#{plant.cost}/day</h5><strong>#{plant.title}</strong><br>"
         }
       }
     end
@@ -53,7 +53,6 @@ class PlantsController < ApplicationController
     authorize @plant
     @plant.user_id = current_user.id
     if @plant.save
-      flash[:notice] = "#{@plant.title} has been added!"
       redirect_to my_plants_path(@plant)
     else
       render :new
@@ -61,7 +60,8 @@ class PlantsController < ApplicationController
   end
 
   def show
-    @booking = Booking.new(start_date: Date.today, end_date: Date.today, plant: @plant)
+    @booking = Booking.new
+    @booking.plant = @plant
     @bookings = Booking.where(plant:@plant)
     authorize @plant
     @markers = [{
@@ -69,7 +69,7 @@ class PlantsController < ApplicationController
       lng: @plant.longitude,
       icon: '/assets/pin.png',
       infoWindow: {
-          content: "<a href='#{@plant.id}'><img src='#{@plant.photo}' class='photo_markers' /><h5> $#{@plant.cost}/day</h5><strong>#{@plant.title}</strong><br>"
+          content: "<a href='plants/#{plant.id}'><img src='#{plant.photo}' class='photo_markers' /><h5> $#{plant.cost}/day</h5><strong>#{plant.title}</strong><br>"
       }
     }]
   end

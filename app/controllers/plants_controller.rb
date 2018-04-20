@@ -60,8 +60,7 @@ class PlantsController < ApplicationController
   end
 
   def show
-    @booking = Booking.new
-    @booking.plant = @plant
+    @booking = Booking.new(start_date: Date.today, end_date: Date.today, plant: @plant)
     @bookings = Booking.where(plant:@plant)
     authorize @plant
     @markers = [{

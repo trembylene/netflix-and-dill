@@ -35,7 +35,7 @@ class PlantsController < ApplicationController
         lat: plant.latitude,
         lng: plant.longitude,
         id: plant.id,
-        icon: '/assets/pin.png',
+        icon: "<%= asset_path 'pin.png' %>",
         infoWindow: {
           content: "<a href='#{plant.id}'><img src='#{plant.photo}' class='photo_markers' /><h5> $#{plant.cost}/day</h5><strong>#{plant.title}</strong><br>"
         }

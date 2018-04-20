@@ -1,5 +1,5 @@
 function showCalendar() {
-    var x = document.getElementById("calendar");
+    const x = document.getElementById("calendar");
     if (x.style.display === "none") {
         x.style.display = "block";
     } else {

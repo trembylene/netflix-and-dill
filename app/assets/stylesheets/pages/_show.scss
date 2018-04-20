@@ -22,7 +22,42 @@ p {
   font-size: 20px;
 }
 
-.plant-booking {
-  margin-top: 5vh;
-  margin-bottom: 5vh;
+#map {
+  margin-top: 30px;
+  a {
+    text-decoration: none;
+  }
+}
+
+.datepicker {
+  width: 250px;
+  cursor: pointer;
+}
+
+.btn-book {
+  .btn {
+    width: 250px;
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background-color: #4da558;
+  }
+}
+
+h3 {
+  text-align: center;
+}
+
+#date-label {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.cost-info {
+  font-size: 16px;
+  color: rgba(0,0,0,0.8);
+  margin: 0px;
+}
+
+.photo_markers {
+  width: 50px;
 }

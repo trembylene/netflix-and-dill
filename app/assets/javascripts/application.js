@@ -17,8 +17,9 @@ $( document ).ready(function() {
 });
 
 function calculateTotal() {
-  const range = $("#booking_end_date").datepicker('getDate') - $("#booking_start_date").datepicker('getDate');
+  let range = $("#booking_end_date").datepicker('getDate') - $("#booking_start_date").datepicker('getDate');
+  range = Math.max(0, range);
   document.getElementById('days').innerHTML = `<strong>${parseInt(range / 86400000)}</strong>`;
-  const price = document.getElementById('booking_cost').value;
+  let price = document.getElementById('booking_cost').value;
   document.getElementById('cost').innerHTML = `<strong>${(range / 86400000) * price}</strong>`;
 };

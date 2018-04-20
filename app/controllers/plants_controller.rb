@@ -53,6 +53,7 @@ class PlantsController < ApplicationController
     authorize @plant
     @plant.user_id = current_user.id
     if @plant.save
+      flash[:notice] = "#{@plant.title} has been added!"
       redirect_to my_plants_path(@plant)
     else
       render :new

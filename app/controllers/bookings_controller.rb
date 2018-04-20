@@ -11,10 +11,17 @@ class BookingsController < ApplicationController
     @booking.plant = @plant
     authorize @plant
     if @booking.save
-      redirect_to plant_path(@plant)
+      flash[:notice] = "Thanks for booking!"
+      respond_to do |format|
+        format.html { redirect_to plant_path(@plant) }
+        format.js  # <-- will render `app/views/bookings/create.js.erb`
+      end
     else
       @bookings = Booking.where(plant:@plant)
-      render "plants/show"
+      respond_to do |format|
+        format.html { render 'plants/show' }
+        format.js  # <-- idem
+      end
     end
   end
 

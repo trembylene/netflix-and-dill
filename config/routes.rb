@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users do
-    resources :bookings, only: [:index]
-  end
+  resources :bookings, only: [:index]
+  resources :users
   resources :plants do
     collection do
       get "search"
